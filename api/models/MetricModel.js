@@ -12,6 +12,11 @@ const StaticMetricSchema = mongoose.Schema({
     prevClose: String,
     difference: String,
     negative: Boolean
+}, {
+    timestamps: {
+        createdAt: true,
+        updatedAt: true
+    }
 }) ;
 
 const LiveMetricSchema = mongoose.Schema({

@@ -1,4 +1,4 @@
-// fetching posts that are posted on r/wallstreetbets and r/investing
+// controller logic for reddit route
 
 const Reddit = require('snoowrap') ;
 

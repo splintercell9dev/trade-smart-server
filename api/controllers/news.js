@@ -1,10 +1,10 @@
-// news route controllers
+// controller logic for news route 
 
 const NEWSAPI = require('newsapi') ;
 const APIKEY = process.env.NEWSAPI_APIKEY ;
 const api = new NEWSAPI(APIKEY) ;
-
-const companies = require('../../new-companies.json') ;
+const vader = require('vader-sentiment') ;
+const companies = require('../json/new-companies.json') ;
 
 const logger = require('../utils/logger') ;
 const { CustomException } = require('../utils/functions') ;
@@ -20,7 +20,26 @@ const FetchAllNews = async (req, res) => {
         
         res.status(200).json({
             code: 200,
-            news: data.articles
+            news: data.articles.map( article => {
+                const input = article.title ;
+                const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input) ;
+                let result ;
+
+                if ( intensity.neg > intensity.neu && intensity.neg > intensity.pos ){
+                    result = 'negative' ;
+                }
+                else if ( intensity.neu > intensity.neg && intensity.neu > intensity.pos ){
+                    result = 'neutral' ;
+                }
+                else{
+                    result = 'positive' ;
+                }
+
+                return {
+                    ...article,
+                    sentiment: result
+                } ;
+            })
         }) ;       
     }
     catch(err){
@@ -48,7 +67,26 @@ const FetchAllNewsRelatedToCompany = async (req, res) => {
 
         res.status(200).json({
             code: 200,
-            news: data.articles
+            news: data.articles.map( article => {
+                const input = article.title ;
+                const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input) ;
+                let result ;
+
+                if ( intensity.neg > intensity.neu && intensity.neg > intensity.pos ){
+                    result = 'negative' ;
+                }
+                else if ( intensity.neu > intensity.neg && intensity.neu > intensity.pos ){
+                    result = 'neutral' ;
+                }
+                else{
+                    result = 'positive' ;
+                }
+
+                return {
+                    ...article,
+                    sentiment: result
+                } ;
+            })
         }) ;
     }
     catch(err){

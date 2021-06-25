@@ -9,6 +9,7 @@ const FetchIndexes = async function(req, res){
         res.status(200).json({
             code: 200,
             metrics: {
+                lastUpdated: data[0].updatedAt,
                 data: data
             }
         }) ;

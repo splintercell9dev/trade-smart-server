@@ -2,6 +2,7 @@ const express = require('express') ;
 const server = express() ;
 const mongoose = require('mongoose') ;
 const morgan = require('morgan') ;
+const cors = require('cors') ;
 require('dotenv/config') ;
 
 const host = process.env.HOST ;
@@ -14,6 +15,7 @@ const RootRoute = require('./routes/index') ;
 server.use(express.json()) ;
 server.use(express.urlencoded({ extended: true })) ;
 server.use(morgan('short', { stream: logger.stream })) ;
+server.use(cors()) ;
 
 (async () => {
     try{
