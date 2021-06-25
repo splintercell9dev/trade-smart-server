@@ -1,0 +1,79 @@
+[
+  {
+    "name": "BSE SENSEX",
+    "current": "52100.05",
+    "difference": "132.38",
+    "percentage": "0.25%",
+    "prevClose": "52232.43",
+    "open": "52367.52",
+    "high": "52389.02",
+    "low": "51952.70",
+    "negative": true
+  },
+  {
+    "name": "NIFTY 50",
+    "current": "15670.25",
+    "percentage": "0.13",
+    "open": "15712.50",
+    "high": "15733.60",
+    "low": "15622.35",
+    "prevClose": "15690.35",
+    "difference": "20.10",
+    "negative": true
+  },
+  {
+    "name": "NIFTY 100",
+    "current": "15945.85",
+    "percentage": "0.04",
+    "open": "15980.90",
+    "high": "16000.00",
+    "low": "15897.15",
+    "prevClose": "15952.65",
+    "difference": "6.80",
+    "negative": true
+  },
+  {
+    "name": "NIFTY BANK",
+    "current": "35291.65",
+    "percentage": "1.00",
+    "open": "35657.85",
+    "high": "35810.90",
+    "low": "35176.15",
+    "prevClose": "35649.00",
+    "difference": "357.35",
+    "negative": true
+  },
+  {
+    "name": "NIFTY AUTO",
+    "current": "10735.75",
+    "percentage": "0.83",
+    "open": "10672.85",
+    "high": "10749.15",
+    "low": "10634.90",
+    "prevClose": "10647.65",
+    "difference": "88.10",
+    "negative": false
+  },
+  {
+    "name": "NIFTY IT",
+    "current": "26996.75",
+    "percentage": "0.03",
+    "open": "27031.60",
+    "high": "27167.50",
+    "low": "26914.60",
+    "prevClose": "26987.90",
+    "difference": "8.85",
+    "negative": false
+  },
+  {
+    "name": "NIFTY PHARMA",
+    "current": "14101.55",
+    "percentage": "0.09",
+    "open": "14150.25",
+    "high": "14156.65",
+    "low": "14050.45",
+    "prevClose": "14114.40",
+    "difference": "12.85",
+    "negative": true
+  }
+]

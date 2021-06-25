@@ -1,0 +1,44 @@
+[
+    {
+        "id": "21328656",
+        "verified": true,
+        "username": "IBDinvestors",
+        "name": "Investors.com",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/929121870107918336/gO-6qGSu_normal.jpg"
+    },
+    {
+        "id": "28571999",
+        "verified": false,
+        "username": "bespokeinvest",
+        "name": "Bespoke",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/884449279212789760/UdhHUuKe_normal.jpg"
+    },
+    {
+        "id": "863527548",
+        "verified": true,
+        "username": "steve_hanke",
+        "name": "Steve Hanke",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/915395033871867905/3zbE7bAT_normal.jpg"
+    },
+    {
+        "id": "203652149",
+        "verified": false,
+        "username": "SJosephBurns",
+        "name": "Steve Burns",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/520984348557078528/5yVF8dSQ_normal.jpeg"
+    },
+    {
+        "id": "202915788",
+        "verified": false,
+        "username": "KimbleCharting",
+        "name": "Chris Kimble",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/3643692952/191da6884b65427219056c6b3bb638eb_normal.jpeg"
+    },
+    {
+        "id": "97334517",
+        "verified": false,
+        "username": "allstarcharts",
+        "name": "J.C. Parets",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1087436296614604800/X8VCSM7y_normal.jpg"
+    }
+]

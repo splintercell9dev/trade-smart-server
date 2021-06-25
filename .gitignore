@@ -5,5 +5,5 @@ scripts/
 .vscode/
 
 # files
-*.json
+posts.json
 *.env
