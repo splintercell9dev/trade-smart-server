@@ -15,7 +15,7 @@ const FetchAllNews = async (req, res) => {
         const data = await api.v2.topHeadlines({
             category: 'business',
             country: 'in',
-            pageSize: 5
+            pageSize: 10
         }) ;
         
         res.status(200).json({

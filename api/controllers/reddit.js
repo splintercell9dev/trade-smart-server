@@ -20,10 +20,10 @@ const api = new Reddit({
 const FetchPostsOnWallStreetBets = async (req, res) => {
     try{
         const data = await api.getSubreddit('wallstreetbets').getHot({
-            limit: 15
+            limit: 25
         }) ;
 
-        const filtered_posts = data.filter( post => !post.pinned && !excludedTags.includes(post.link_flair_text) ).slice(0, 10) ;
+        const filtered_posts = data.filter( post => !post.pinned && !excludedTags.includes(post.link_flair_text) ).slice(2, 12) ;
         res.status(200).json({
             code: 200,
             reddit: {
@@ -44,7 +44,7 @@ const FetchPostsOnWallStreetBets = async (req, res) => {
 const FetchPostsOnInvesting = async (req, res) => {
     try{
         const data = await api.getSubreddit('investing').getHot({
-            limit: 15
+            limit: 25
         }) ;
 
         const filtered_posts = data.filter( post => !post.pinned && !excludedTags.includes(post.link_flair_text) ).slice(2, 12) ;
