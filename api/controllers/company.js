@@ -6,6 +6,29 @@ const { CustomException } = require('../utils/functions') ;
 const FullList = require('../json/full_company_list.json') ;
 const CompanyModel = require('../models/CompanyModel') ;
 
+const ChartIntervals = [
+    {
+        interval: '5m',
+        range: '1d'
+    },
+    {
+        interval: '5m',
+        range: '5d'
+    },
+    {
+        interval: '1d',
+        range: '6mo'
+    },
+    {
+        interval: '1d',
+        range: '1y'
+    },
+    {
+        interval: '1d',
+        range: '5y'
+    }
+]
+
 const CompanyInfo = axios.create({
     baseURL: 'https://yahoo-finance-low-latency.p.rapidapi.com/v11/',
     headers: {
@@ -87,7 +110,7 @@ const FetchFullCompanyDetails = async (req, res) => {
 
         const result = await CompanyInfo.get(`/finance/quoteSummary/${YFSymbol}`, {
             params: {
-                modules: 'summaryDetail,assetProfile'
+                modules: 'summaryDetail,assetProfile,incomeStatementHistory,balanceSheetHistory'
             }
         }) ;
 
@@ -100,7 +123,7 @@ const FetchFullCompanyDetails = async (req, res) => {
                 code: 200,
                 details: {
                     ...result.data.quoteSummary.result[0],
-                    stock: stock
+                    stock
                 }
             }) ;
         }
@@ -128,15 +151,20 @@ const FetchFullCompanyDetails = async (req, res) => {
 const FetchCompanyGraph = async (req, res) => {
     try{
         const YFSymbol = req.query.symbol ;
+        const range = req.query.range ;
+        const selectedInterval = ChartIntervals.filter( val => val.range === range)[0] ;
         
         if (YFSymbol === '' || YFSymbol === undefined){
             throw CustomException('Requested query must not be empty','invalid') ;
         }
+        else if (!selectedInterval && range === undefined){
+            throw CustomException('Chart range is invalid', 'invalid') ;
+        }
 
         const result = await CompanyGraph.get(`/finance/chart/${YFSymbol}`, {
             params: {
-                interval: '5m',
-                range: '1d'
+                interval: selectedInterval.interval,
+                range: selectedInterval.range
             }
         }) ;
 
@@ -146,9 +174,9 @@ const FetchCompanyGraph = async (req, res) => {
             res.status(200).json({
                 code: 200,
                 chart: {
-                    range: '1d',
+                    range: selectedInterval.range,
                     timestamp,
-                    indicators: indicators.quote[0]
+                    indicators: indicators.quote[0].close
                 }
             }) ;
         }
