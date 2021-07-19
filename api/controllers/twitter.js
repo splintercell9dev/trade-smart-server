@@ -4,7 +4,6 @@ const axios = require('axios').default ;
 const logger = require('../utils/logger') ;
 const list = require('../json/people.json') ;
 const companyList = require('../json/full_company_list.json') ;
-const { CustomException } = require('../utils/functions') ; 
 const Twitter = axios.create({
     baseURL: 'https://api.twitter.com/2/',
     headers: {
@@ -82,6 +81,7 @@ const FetchCompanyPostFeed = async (req, res) => {
 
             const twitter = {
                 ...twitterDetails,
+                profile_image_url: companyList[companyIndex].profileImageUrl,
                 tweets: {
                     data: result.data.data || []
                 }
