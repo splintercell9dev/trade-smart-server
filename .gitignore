@@ -1,7 +1,6 @@
 # folders
 node_modules/
 logs/
-scripts/
 .vscode/
 
 # files
