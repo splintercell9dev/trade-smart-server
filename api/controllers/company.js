@@ -29,11 +29,37 @@ const ChartIntervals = [
     }
 ]
 
+// old rapid api (now not working)
+
+// const CompanyInfo = axios.create({
+//     baseURL: 'https://yahoo-finance-low-latency.p.rapidapi.com/v11/',
+//     headers: {
+//         'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com',
+//         'x-rapidapi-key': process.env.RAPIDAPI_APIKEY2
+//     },
+//     params: {
+//         region: 'IN'
+//     }
+// }) ;
+
+// const CompanyGraph = axios.create({
+//     baseURL: 'https://yahoo-finance-low-latency.p.rapidapi.com/v8/',
+//     headers: {
+//         'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com',
+//         'x-rapidapi-key': process.env.RAPIDAPI_APIKEY1
+//     },
+//     params: {
+//         region: 'IN'
+//     }
+// }) ;
+
+
+// new yahoo finance api
+
 const CompanyInfo = axios.create({
-    baseURL: 'https://yahoo-finance-low-latency.p.rapidapi.com/v11/',
+    baseURL: 'https://yfapi.net/v11',
     headers: {
-        'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com',
-        'x-rapidapi-key': process.env.RAPIDAPI_APIKEY2
+        'x-api-key': process.env.YAHOOFINANCE_APIKEY
     },
     params: {
         region: 'IN'
@@ -41,10 +67,9 @@ const CompanyInfo = axios.create({
 }) ;
 
 const CompanyGraph = axios.create({
-    baseURL: 'https://yahoo-finance-low-latency.p.rapidapi.com/v8/',
+    baseURL: 'https://yfapi.net/v8',
     headers: {
-        'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com',
-        'x-rapidapi-key': process.env.RAPIDAPI_APIKEY1
+        'x-api-key': process.env.YAHOOFINANCE_APIKEY
     },
     params: {
         region: 'IN'
@@ -118,7 +143,7 @@ const FetchFullCompanyDetails = async (req, res) => {
             YFSymbol: YFSymbol
         }) ;
 
-        if ( result.data.quoteSummary.error === null ){
+        if ( result.data && result.data.quoteSummary.error === null ){
             res.status(200).json({
                 code: 200,
                 details: {
@@ -168,7 +193,7 @@ const FetchCompanyGraph = async (req, res) => {
             }
         }) ;
 
-        if ( result.data.chart.error === null ){
+        if ( result.data && result.data.chart.error === null ){
             const { timestamp, indicators } =  result.data.chart.result[0] ;
 
             res.status(200).json({
